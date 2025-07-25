@@ -15,8 +15,9 @@ import java.util.List;
 @Transactional
 public class ReservationService {
     private final ReservationRepository reservationRepository;
-
+    // 예약 전체 목록 조회
     public List<ReservationDto> findAll(){
+        // Reservation, List<Reservation> 객체를 ReservationDto, List<ReservationDto>로 변환
         List<Reservation> reservations = reservationRepository.findAll();
         List<ReservationDto> reservationDtos = new ArrayList<>();
 
@@ -28,12 +29,12 @@ public class ReservationService {
                     reservation.getEvent().getId()
             );
         }).toList();
-        System.out.println("reservations:"+reservations);
-        System.out.println("reservationDtos"+reservationDtos);
         return reservationDtos;
     }
 
+    // 예약 단일 조회
     public ReservationDto findById(Long id){
+        // Reservation 객체를 ReservationDto로 변환
         Reservation reservation = reservationRepository.findById(id);
         ReservationDto reservationDto = new ReservationDto();
 
@@ -45,7 +46,9 @@ public class ReservationService {
         return reservationDto;
     }
 
+    // 예약 이벤트 별 조회
     public List<ReservationDto> findByEventId(Long eventId){
+        // Reservation, List<Reservation> 객체를 ReservationDto, List<ReservationDto>로 변환
         List<Reservation> reservations = reservationRepository.findByEventId(eventId);
         List<ReservationDto> reservationDtos = new ArrayList<>();
 
@@ -59,15 +62,15 @@ public class ReservationService {
         }).toList();
         return reservationDtos;
     }
-
+    // 예약 등록
     public void save(Long eventId, ReservationDto reservationDto){
         reservationRepository.save(eventId, reservationDto);
     }
-
+    // 예약 수정
     public void update(Long id, ReservationDto reservationDto){
         reservationRepository.update(id, reservationDto);
     }
-
+    // 예약 삭제
     public void delete(Long id){
         reservationRepository.delete(id);
     }

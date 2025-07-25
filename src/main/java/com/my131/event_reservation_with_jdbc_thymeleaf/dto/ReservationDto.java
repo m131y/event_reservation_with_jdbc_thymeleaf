@@ -19,6 +19,6 @@ public class ReservationDto {
     @Min(1)	 // 최소 1 제약
     // 요청 단계에서 null 필터링 (논리적 제약)
     @NotNull(message = "좌석수를 입력해 주세요. (1 이상)")
-    private int seats;
+    private Integer seats;
     private Long eventId;
 }

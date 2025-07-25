@@ -22,30 +22,31 @@ public class EventRepository {
             .eventDate(resultSet.getTimestamp("event_date").toLocalDateTime())
             .build();
 
+    // 이벤트 전체 조회, id 순으로 정렬
     public List<Event> findAll(){
         String sql = "SELECT * FROM events ORDER BY id ASC;";
 
         return jdbcTemplate.query(sql, EventRowMapper);
     }
-
+    // 이벤트 단일 조회
     public Event findById(Long id){
         String sql = "SELECT * FROM events WHERE id = ?";
 
         return jdbcTemplate.queryForObject(sql, EventRowMapper, id);
     }
-
+    // 이벤트 등록
     public int save(EventDto eventDto){
         String sql = "INSERT INTO events (name, location, event_date) VALUES (?,?,?)";
 
         return jdbcTemplate.update(sql, eventDto.getName(), eventDto.getLocation(), Timestamp.valueOf(eventDto.getEventDate()));
     }
-
+    // 이벤트 수정
     public int update(Long id, EventDto eventDto){
         String sql =  "UPDATE events SET name = ?, location = ?, event_date =? WHERE id = ?";
 
         return jdbcTemplate.update(sql, eventDto.getName(), eventDto.getLocation(), Timestamp.valueOf(eventDto.getEventDate()), id);
     }
-
+    // 이벤트 삭제
     public int delete(Long id){
         String sql =  "DELETE FROM events WHERE id = ?";
 
