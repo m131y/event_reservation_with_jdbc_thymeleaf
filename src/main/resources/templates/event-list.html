@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🔍 이벤트 리스트</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+
+  </head>
+
+  <body>
+    <header>
+      <h1>🔍 이벤트 리스트</h1>
+      <div class="header-menu">
+        <p>
+          <a href="/" class="back-btn">← 목록으로</a>
+        </p>
+        <p>
+          <a th:href="@{/events/add}" class="btn">➕ 추가</a>
+        </p>
+      </div>
+    </header>
+    <section class="menu">
+      <div class="container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>이벤트 이름</th>
+              <th>장소</th>
+              <th>날짜</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody th:each="eventDto: ${eventDtos}">
+            <tr>
+              <td th:text="${eventDto.id}"></td>
+              <td>
+                <a
+                  th:href="@{'/events/'+${eventDto.id}}"
+                  th:text="${eventDto.name}"
+                ></a>
+              </td>
+              <td th:text="${eventDto.location}"></td>
+              <td th:text="${eventDto.eventDate}"></td>
+              <td>
+                <a th:href="@{'/events/' + ${eventDto.id} + '/edit'}">수정</a>
+                <form
+                  th:action="@{'/events/' + ${eventDto.id} + '/delete'}"
+                  method="post"
+                  style="display: inline"
+                >
+                  <button type="submit">삭제</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

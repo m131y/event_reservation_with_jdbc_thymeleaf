@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title
+      th:text="${eventDto.id != null} ? '📄 이벤트 수정 ' : '📄 이벤트 등록 '"
+    >
+      페이지
+    </title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+
+  </head>
+  <body>
+    <header>
+      <h1
+        th:text="${eventDto.id != null} ? '✏️ 이벤트 수정' : '➕ 이벤트 등록'"
+      >
+        이벤트 폼
+      </h1>
+      <div class="header-menu">
+        <p>
+          <a href="/" class="back-btn">← 목록으로</a>
+        </p>
+        <p>
+          <a></a>
+        </p>
+      </div>
+    </header>
+    <section class="form-container">
+      <form
+        th:action="${eventDto.id != null} ? @{'/events/' + ${eventDto.id} + '/edit'} : @{/events/add}"
+        th:object="${eventDto}"
+        method="post"
+      >
+        <div class="form-group">
+          <label>행사 이름:</label>
+          <input type="text" id="name" th:field="*{name}" />
+        </div>
+        <div class="form-group">
+          <label> 행사 장소:</label>
+          <input type="text" id="location" th:field="*{location}" />
+        </div>
+        <div class="form-group">
+          <label> 행사 날짜:</label>
+          <input type="datetime-local" id="eventDate" th:field="*{eventDate}" />
+        </div>
+        <div class="form-action">
+          <button
+            type="submit"
+            class="submit-btn"
+            th:text="${eventDto.id != null} ? '수정' : '등록'"
+          >
+            등록
+          </button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

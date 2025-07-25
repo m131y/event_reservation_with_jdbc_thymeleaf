@@ -1,0 +1,269 @@
+/* ------------------ 공통 ------------------ */
+body {
+  font-family: "Pretendard Variable", sans-serif;
+  background-color: #fafafa;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------ 헤더 ------------------ */
+header {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.header-menu {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------------ 폼 ------------------ */
+.form-container {
+  background-color: white;
+  width: 90%;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.form-group {
+  padding-right: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+.submit-btn {
+  background-color: #a2a2a2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #848484;
+}
+
+/* ------------------ 테이블 ------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #f0f0f0;
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
+
+tbody td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+table a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+
+table button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+table button:hover {
+  background-color: #c0392b;
+}
+
+/* ------------------ 버튼 ------------------ */
+.back-btn {
+  display: inline-block;
+  background-color: #b5b5b5;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.back-btn:hover {
+  background-color: #848484;
+}
+
+/* ------------------ 메뉴 리스트 (홈 화면 카드) ------------------ */
+.menu .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+}
+
+.menu-list {
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.menu-list a {
+  background-color: #ededed;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 400px;
+  height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.menu-list a:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.detail-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* 이벤트/예약 테이블 폭 좁힘 */
+.narrow-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.narrow-table th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+  padding: 12px 8px;
+  text-align: center;
+  white-space: nowrap;
+  width: 15%; /* 최소한의 너비만 차지 */
+}
+
+.narrow-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+/* 예약 폼 */
+.reserve-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.reserve-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.reserve-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.reserve-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.reserve-form .submit-btn {
+  background-color: #2c80b4;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.reserve-form .submit-btn:hover {
+  background-color: #23668e;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="'📄 ' + ${eventDto.name} + ' 상세보기'"></title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+
+  </head>
+
+  <body>
+    <header>
+      <h1 th:text="'📄 ' + ${eventDto.name} + ' 상세보기'"></h1>
+      <div class="header-menu">
+        <p>
+          <a href="/events" class="back-btn">← 목록으로</a>
+        </p>
+        <div class="edit-menu">
+          <a th:href="@{'/events/' + ${eventDto.id} + '/edit'}" class="btn"
+            >✏️ 수정</a
+          >
+          <form
+            th:action="@{'/events/' + ${eventDto.id} + '/delete'}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn danger">🗑️ 삭제</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="detail-container">
+      <section class="info-section">
+        <table class="narrow-table">
+          <tr>
+            <th>ID</th>
+            <td th:text="${eventDto.id}"></td>
+          </tr>
+          <tr>
+            <th>이름</th>
+            <td th:text="${eventDto.name}"></td>
+          </tr>
+          <tr>
+            <th>장소</th>
+            <td th:text="${eventDto.location}"></td>
+          </tr>
+          <tr>
+            <th>날짜</th>
+            <td
+              th:text="${#temporals.format(eventDto.eventDate, 'yyyy-MM-dd HH:mm')}"
+            ></td>
+          </tr>
+        </table>
+      </section>
+      <section class="reserve-section">
+        <h3>예약하기</h3>
+        <form
+          th:action=" @{'/events/' + ${eventDto.id} + '/reserve'}"
+          th:object="${reservationDto}"
+          method="post"
+        >
+          <div class="form-group">
+            <label> 예약자 이름:</label>
+            <input type="text" th:field="*{attendeeName}" />
+          </div>
+          <div class="form-group">
+            <label> 좌석 수:</label>
+            <!--th:field="*{location}": DTO의 location 필드와 바인딩됨.-->
+            <input type="text" th:field="*{seats}" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">예약 등록</button>
+          </div>
+        </form>
+      </section>
+      <section class="history-section">
+        <h3>예약 내역</h3>
+        <table class="narrow-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>예약자 이름</th>
+              <th>예약 자리 수</th>
+              <th>액션</th>
+            </tr>
+          </thead>
+          <tbody th:each="reservationDto: ${reservationDtos}">
+            <tr>
+              <td th:text="${reservationDto.id}"></td>
+              <td th:text="${reservationDto.attendeeName}"></td>
+              <td th:text="${reservationDto.seats}"></td>
+              <td>
+                <a
+                  th:href="@{'/reservations/' + ${reservationDto.id} + '/edit'}"
+                  >수정</a
+                >
+                <form
+                  th:action="@{'/reservations/' + ${reservationDto.id} + '/cancel'}"
+                  method="post"
+                  style="display: inline"
+                >
+                  <button type="submit">삭제</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
