@@ -1,14 +1,9 @@
 package com.my131.event_reservation_with_jdbc_thymeleaf.controller;
 
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventResponseDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.model.Event;
-import com.my131.event_reservation_with_jdbc_thymeleaf.model.Reservation;
 import com.my131.event_reservation_with_jdbc_thymeleaf.service.EventService;
 import com.my131.event_reservation_with_jdbc_thymeleaf.service.ReservationService;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -71,8 +66,11 @@ public class EventController {
     @PostMapping("/{id}/edit")
     public String edit(
             @PathVariable Long id,
-            @Valid @ModelAttribute EventDto eventDto
+            @Valid @ModelAttribute EventDto eventDto,
+            BindingResult bindingResult
     ) {
+        if (bindingResult.hasErrors()) return "event-form";
+
         eventService.update(id, eventDto);
         return "redirect:/events";
     }

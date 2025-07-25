@@ -1,8 +1,6 @@
 package com.my131.event_reservation_with_jdbc_thymeleaf.repository;
 
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationRequestDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.model.Event;
 import com.my131.event_reservation_with_jdbc_thymeleaf.model.Reservation;
 import lombok.RequiredArgsConstructor;
@@ -45,7 +43,7 @@ public class ReservationRepository {
     }
 
     public List<Reservation> findByEventId(Long eventId){
-        String sql = "SELECT * FROM reservations WHERE event_id = ?";
+        String sql = "SELECT * FROM reservations WHERE event_id = ? ORDER BY id ASC";
 
         return jdbcTemplate.query(sql, reservationRowMapper(), eventId);
     }

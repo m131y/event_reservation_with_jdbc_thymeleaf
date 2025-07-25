@@ -1,10 +1,6 @@
 package com.my131.event_reservation_with_jdbc_thymeleaf.service;
 
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationRequestDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.model.Event;
 import com.my131.event_reservation_with_jdbc_thymeleaf.model.Reservation;
 import com.my131.event_reservation_with_jdbc_thymeleaf.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;

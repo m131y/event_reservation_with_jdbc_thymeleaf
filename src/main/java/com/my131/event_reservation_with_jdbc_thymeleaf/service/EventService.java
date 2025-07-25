@@ -2,8 +2,6 @@ package com.my131.event_reservation_with_jdbc_thymeleaf.service;
 
 
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventResponseDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.model.Event;
 import com.my131.event_reservation_with_jdbc_thymeleaf.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor

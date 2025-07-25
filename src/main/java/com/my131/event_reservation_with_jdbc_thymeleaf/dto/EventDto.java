@@ -15,9 +15,10 @@ import java.time.LocalDateTime;
 public class EventDto {
     private Long id;
     // 요청 단계에서 null 필터링 (논리적 제약)
-    @NotBlank(message = "이름 입력하세요")
+    @NotBlank(message = "이름을 입력해주세요")
     private String name;
 
+    @NotBlank(message = "장소를 입력해주세요")
     private String location;
 
     // 요청 단계에서 null 필터링 (논리적 제약)

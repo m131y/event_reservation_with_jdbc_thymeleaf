@@ -1,10 +1,7 @@
 package com.my131.event_reservation_with_jdbc_thymeleaf.controller;
 
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.ReservationRequestDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.model.Reservation;
 import com.my131.event_reservation_with_jdbc_thymeleaf.service.EventService;
 import com.my131.event_reservation_with_jdbc_thymeleaf.service.ReservationService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,9 +31,19 @@ public class ReservationController {
     public String add(
             @PathVariable Long eventId,
             @Valid @ModelAttribute ReservationDto reservationDto,
-            BindingResult bindingResult
+            BindingResult bindingResult,
+            Model model
     ) {
-        if(bindingResult.hasErrors()) return "reservation-form";
+        if(bindingResult.hasErrors()) {
+            EventDto eventDto = eventService.findById(eventId);
+            List<ReservationDto> reservationDtos = reservationService.findByEventId(eventId);
+
+            model.addAttribute("eventDto", eventDto);
+            model.addAttribute("reservationDto", reservationDto);
+            model.addAttribute("reservationDtos", reservationDtos);
+
+            return "event-detail";
+        }
 
         reservationService.save(eventId, reservationDto);
         return "redirect:/events/" + eventId ;
@@ -53,8 +60,11 @@ public class ReservationController {
     @PostMapping("/reservations/{id}/edit")
     public String edit(
             @PathVariable Long id,
-            @Valid @ModelAttribute ReservationDto reservationDto
+            @Valid @ModelAttribute ReservationDto reservationDto,
+            BindingResult bindingResult
     ) {
+        if (bindingResult.hasErrors()) return "reservation-form";
+
         reservationService.update(id, reservationDto);
         Long eventId = reservationService.findById(id).getEventId();
         return "redirect:/events/" + eventId ;

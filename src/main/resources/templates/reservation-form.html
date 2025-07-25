@@ -29,12 +29,14 @@
                 예약자 이름:
                 <input type="text" th:field="*{attendeeName}" />
             </label>
+            <div class="error" th:if="${#fields.hasErrors('attendeeName')}" th:errors="*{attendeeName}"></div>
         </div>
         <div class="form-group">
             <label>
                 예약 좌석 수:
                 <input type="text" th:field="*{seats}" />
             </label>
+            <div class="error" th:if="${#fields.hasErrors('seats')}" th:errors="*{seats}"></div>
         </div>
         <div class="form-action">
             <button type="submit" class="submit-btn">예약 수정</button>

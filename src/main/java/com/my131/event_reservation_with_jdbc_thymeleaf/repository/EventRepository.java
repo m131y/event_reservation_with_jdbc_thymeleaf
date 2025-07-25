@@ -1,7 +1,6 @@
 package com.my131.event_reservation_with_jdbc_thymeleaf.repository;
 
 import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventDto;
-import com.my131.event_reservation_with_jdbc_thymeleaf.dto.EventRequestDto;
 import com.my131.event_reservation_with_jdbc_thymeleaf.model.Event;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;

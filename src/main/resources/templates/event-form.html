@@ -36,14 +36,17 @@
         <div class="form-group">
           <label>행사 이름:</label>
           <input type="text" id="name" th:field="*{name}" />
+          <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
         <div class="form-group">
           <label> 행사 장소:</label>
           <input type="text" id="location" th:field="*{location}" />
+          <div class="error" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></div>
         </div>
         <div class="form-group">
           <label> 행사 날짜:</label>
           <input type="datetime-local" id="eventDate" th:field="*{eventDate}" />
+          <div class="error" th:if="${#fields.hasErrors('eventDate')}" th:errors="*{eventDate}"></div>
         </div>
         <div class="form-action">
           <button

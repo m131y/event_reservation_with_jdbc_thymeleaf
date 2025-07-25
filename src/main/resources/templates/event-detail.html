@@ -54,7 +54,7 @@
       <section class="reserve-section">
         <h3>예약하기</h3>
         <form
-          th:action=" @{'/events/' + ${eventDto.id} + '/reserve'}"
+          th:action="@{'/events/' + ${eventDto.id} + '/reserve'}"
           th:object="${reservationDto}"
           method="post"
         >
@@ -62,11 +62,12 @@
             <label> 예약자 이름:</label>
             <input type="text" th:field="*{attendeeName}" />
           </div>
+          <div class="error" th:if="${#fields.hasErrors('attendeeName')}" th:errors="*{attendeeName}"></div>
           <div class="form-group">
             <label> 좌석 수:</label>
-            <!--th:field="*{location}": DTO의 location 필드와 바인딩됨.-->
             <input type="text" th:field="*{seats}" />
           </div>
+          <div class="error" th:if="${#fields.hasErrors('seats')}" th:errors="*{seats}"></div>
           <div class="form-actions">
             <button type="submit" class="submit-btn">예약 등록</button>
           </div>
